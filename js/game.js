@@ -49,8 +49,8 @@ function game() {
    let userArea = document.querySelector('.user-area');
    let header = document.querySelector('.header');
 
-   userName = prompt('Давайте познакомимся. Как вас зовут ?');
-   userArea.innerHTML = `Добро пожаловать ${userName}, рады Вас приветствовать.`;
+   userName = prompt('Введите имя игрока ?');
+   userArea.innerHTML = `Вперед ${userName}. Посмотрим, на что Вы способны.`;
    levelLog.push(`пользователь ${userName} - присоеденился`); // добавляем инфу в лог
    gameLog.push(`пользователь ${userName} - присоеденился`); // добавляем инфу в лог
 
