@@ -1,21 +1,44 @@
-let usersLog = [];
-let gameLog = [];
-
-console.log('game - work');
-
+let usersLog = []; // статистика игроков
+let gameLog = []; // игровой лог
 
 const start = document.querySelector('.start');
 const statistics = document.querySelector('.statistics');
+const popup = document.querySelector('.popup__container');
+let popupContent = document.querySelector('.popup__content')
 
+//======================= КНОПКИ =========================
+// кнопка старт
 start.onclick = () => {
    game()
 };
 
+//кнопка статистики
 statistics.onclick = () => {
-   console.log(usersLog);
-   console.log(gameLog);
+   popup.classList.add('active');
+   showStats();
 };
 
+// закрытие попап
+popup.onclick = (event) => {
+   if (event.target == popup) {
+      popup.classList.remove('active');
+   }
+   popupContent.innerHTML = '';
+};
+
+
+// const statisticsFragment = document.createDocumentFragment();
+showStats = function () {
+   usersLog.forEach( (player)=> {
+      const playerItem = document.createElement('p');
+      playerItem.innerHTML = `${player.player} - ${player.name} - ${player.score} очков.  ${player.clickPerSec} - кликов в секунду`;
+      popupContent.append(playerItem);
+   });
+}
+
+
+//======================= ИГРА =========================
+// настройки и логика игры
 function game() {
    let levelLog = []; // лог игры
    let score = 0; // начальное значение для очков
@@ -66,7 +89,6 @@ function game() {
 
    var squareMuve =  setInterval(() => {  
       let headerHigth = header.clientHeight;
-      console.log(headerHigth);
 
       square.forEach(element => {
          let y = window.innerHeight - element.clientHeight;
@@ -81,15 +103,15 @@ function game() {
       });
    }, 2000); // время в секундах для фигур
 
-
    setTimeout(() => { // останавливает таймер, по истечении времени
       clearInterval(timer);
       clearInterval(squareMuve);
       alert(`Время вышло ${userName}`)
       alert(`Ваш резальтат ${score} очков !!!`)
-      console.log(levelLog);
 
       usersLog.push({player: `Player` + (+usersLog.length + 1) , name: userName, score: score, time: startTime, clickPerSec: Math.round(parseFloat(score / startTime) * 100) / 100,})
+      levelLog.push('игра завершена'); // добавляем инфу в лог
+      gameLog.push('игра завершена'); // добавляем инфу в лог
 
    }, (time * 1000));
 };
