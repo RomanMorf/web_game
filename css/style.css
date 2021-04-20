@@ -49,17 +49,7 @@ body {
    background-color: red;
 }
 
-.popup__body {
-   margin-top: 10%;
-   background-color: #fff;
-   margin: 50px auto;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
-   width: 50%;
-   border-radius: 30px;
-}
+
 
 .container {
    position: absolute;
@@ -74,6 +64,22 @@ body {
 
 .container.active {
    display: block;
+}
+
+.popup__body {
+   margin-top: 10%;
+   background-color: #fff;
+   margin: 50px auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   width: 50%;
+   border-radius: 30px;
+}
+
+.content {
+   padding: 5px;
 }
 
 .popup__title {
