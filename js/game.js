@@ -115,5 +115,15 @@ function game() {
       levelLog.push('игра завершена'); // добавляем инфу в лог
       gameLog.push('игра завершена'); // добавляем инфу в лог
 
+      // сохранить в локалсторедж--------------------------
+      let tempPlayer = {
+         name: userName, 
+         score: score, 
+         time: startTime, 
+         clickPerSec: Math.round(parseFloat(score / startTime) * 100) / 100,
+      }
+      localStorage.setItem(`${'Player' + (+usersLog.length)}`, JSON.stringify(tempPlayer))
+      //--------------------------------------------------
+
    }, (time * 1000));
 };
