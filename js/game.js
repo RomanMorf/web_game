@@ -3,8 +3,8 @@ let gameLog = []; // игровой лог
 
 const start = document.querySelector('.start');
 const statistics = document.querySelector('.statistics');
-const popup = document.querySelector('.popup__container');
-let popupContent = document.querySelector('.popup__content')
+const popup = document.querySelector('.container');
+const popupContent = document.querySelector('.content');
 
 //======================= КНОПКИ =========================
 // кнопка старт
@@ -22,18 +22,21 @@ statistics.onclick = () => {
 popup.onclick = (event) => {
    if (event.target == popup) {
       popup.classList.remove('active');
+      popupContent.innerHTML = '';
    }
-   popupContent.innerHTML = '';
 };
 
 
 // const statisticsFragment = document.createDocumentFragment();
 showStats = function () {
-   usersLog.forEach( (player)=> {
+   const fragment = document.createDocumentFragment();
+
+   usersLog.forEach( (player) => {
       const playerItem = document.createElement('p');
       playerItem.innerHTML = `${player.player} - ${player.name} - ${player.score} очков.  ${player.clickPerSec} - кликов в секунду`;
-      popupContent.append(playerItem);
+      fragment.append(playerItem);
    });
+   popupContent.appendChild(fragment);
 }
 
 
