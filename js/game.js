@@ -86,7 +86,6 @@ function game() {
    });
 
    let squareSize = innerHeight / 10; // размер кубиков (10% от ширины экрана)
-
    var squareMuve =  setInterval(() => {  
       let headerHigth = header.clientHeight;
 
